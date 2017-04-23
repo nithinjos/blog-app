@@ -9,13 +9,21 @@ app.config([
         .state('home', {
             url:'/home',
             templateUrl:'home/_home.html',
-            controller:'MainCtrl'    
-        });
-
-    $stateProvider    
+            controller:'MainCtrl',
+            resolve: {
+                postPromise: ['posts', function(posts){
+                    return posts.getAll();
+                }]
+            }    
+        })
         .state('posts', {
             url:'/posts/{id}',
             templateUrl:'posts/_posts.html',
+            resolve: {
+                post: ['$stateParams', 'posts', function($stateParams,posts){
+                    return posts.get($stateParams.id);
+                }]
+            },
             controller:'PostsCtrl'
         });
 
