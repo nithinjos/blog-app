@@ -10,9 +10,11 @@
         <style> .glyphicon-thumbs-up {cursor: pointer} </style>
     </head>
 
+            
     <body ng-app="flapperNews" style="background-image: url('http://www.digitalplatforms.co.za/wp-content/uploads/2015/11/Website-Design-Background.png'); background-repeat:no-repeat; background-size:cover;">   
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
+                <div ng-include="'nav/_nav.html'"></div>
                    <ui-view></ui-view>
                 </div>
             </div>
